@@ -1,12 +1,11 @@
 package com.spring.homework.domain;
 
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -19,4 +18,8 @@ public class Company {
 
     @Column(name = "company_name")
     private String name;
+
+    @JsonIgnore
+    @OneToMany(mappedBy = "company")
+    private List<Product> products;
 }

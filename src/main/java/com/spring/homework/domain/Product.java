@@ -1,10 +1,8 @@
 package com.spring.homework.domain;
 
 import lombok.Data;
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+
+import javax.persistence.*;
 import java.math.BigDecimal;
 
 @Entity
@@ -22,6 +20,7 @@ public class Product {
     @Column(name = "product_price")
     private BigDecimal price;
 
-    @Column(name = "company_id")
-    private Long companyId;
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name = "company_id")
+    private Company company;
 }

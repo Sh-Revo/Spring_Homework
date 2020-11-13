@@ -2,10 +2,8 @@ package com.spring.homework.domain;
 
 import lombok.Data;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
-import javax.persistence.Table;
+import javax.persistence.*;
+import java.util.List;
 
 @Entity
 @Data
@@ -28,6 +26,7 @@ public class User {
     @Column(name = "user_lastname")
     private String lastname;
 
-    @Column(name = "role_id")
-    private Long roleId;
+    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @JoinColumn(name="role_id")
+    private Role role;
 }
