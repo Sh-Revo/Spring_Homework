@@ -19,7 +19,7 @@ public class RoleController {
         return roleService.getAllRoles();
     }
 
-    @PostMapping("updateAndInsert")
+    @PostMapping("/updateAndInsert")
     public void updateRole(@RequestBody Role role){
         roleService.updateRole(role);
     }

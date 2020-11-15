@@ -19,7 +19,7 @@ public class UserController {
         return userService.getAllUser();
     }
 
-    @PostMapping("updateAndInsert")
+    @PostMapping("/updateAndInsert")
     public void updateUser(@RequestBody User user){
         userService.updateUser(user);
     }

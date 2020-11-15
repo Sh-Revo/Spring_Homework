@@ -19,7 +19,7 @@ public class ProductController {
         return productService.getAllProduct();
     }
 
-    @PostMapping("updateAndInsert")
+    @PostMapping("/updateAndInsert")
     public void updateProduct(@RequestBody Product product){
         productService.updateProduct(product);
     }
