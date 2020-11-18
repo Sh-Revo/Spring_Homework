@@ -1,6 +1,7 @@
 package com.spring.homework.domain;
 
 import lombok.Data;
+import org.springframework.context.annotation.Bean;
 
 import javax.persistence.*;
 import java.math.BigDecimal;
@@ -23,4 +24,6 @@ public class Product {
     @ManyToOne(optional = false, cascade = CascadeType.ALL)
     @JoinColumn(name = "company_id")
     private Company company;
+
+
 }

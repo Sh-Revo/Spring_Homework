@@ -4,6 +4,7 @@ import com.spring.homework.domain.Company;
 import com.spring.homework.service.CompanyService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.servlet.ModelAndView;
 
 import java.util.List;
 
@@ -27,5 +28,13 @@ public class CompanyController {
     @PostMapping("/delete")
     public void deleteCompany(@RequestBody Company company){
         companyService.deleteCompany(company);
+    }
+
+    @RequestMapping("/show_company")
+    public ModelAndView home() {
+        List<Company> listCompany = companyService.getAllCompany();
+        ModelAndView mav = new ModelAndView("show_company");
+        mav.addObject("listCompany", listCompany);
+        return mav;
     }
 }

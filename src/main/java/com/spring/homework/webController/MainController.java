@@ -2,9 +2,6 @@ package com.spring.homework.webController;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestHeader;
-
-import java.util.Map;
 
 @Controller
 public class MainController {
@@ -37,5 +34,20 @@ public class MainController {
     @GetMapping("/registration")
     public String registration(){
         return "registration";
+    }
+
+    @GetMapping("/add_company")
+    public String addCompany(){
+        return "add_company";
+    }
+
+    @GetMapping("/add_product")
+    public String addProduct(){
+        return "add_product";
+    }
+
+    @GetMapping("/show_company")
+    public String showCompany(){
+        return "show_company";
     }
 }
