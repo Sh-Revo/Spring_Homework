@@ -23,7 +23,11 @@ public class CompanyService {
         companyRepository.save(company);
     }
 
-    public void deleteCompany(Company company){
-        companyRepository.delete(company);
+    public void deleteCompany(Long id){
+        companyRepository.deleteById(id);
+    }
+
+    public Company getCompany(Long id){
+        return companyRepository.findById(id).get();
     }
 }

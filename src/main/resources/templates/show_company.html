@@ -7,31 +7,24 @@
 <body>
 <div align="center">
     <h2>Company Manager</h2>
-    <form method="get" action="search">
-        <input type="text" name="keyword" />
-        <input type="submit" value="Search" />
-    </form>
-    <h3><a href="/new">New Company</a></h3>
+    <h3><a th:href="@{/api/company/add_company}">New Company</a></h3>
     <table border="1" cellpadding="5">
         <tr>
             <th>ID</th>
             <th>Name</th>
         </tr>
-
-<!--            <tr th:each = "company: ${companies}">-->
-<!--                <td th:utex = "${company.id}">1</td>-->
-<!--                <td th:utex = "${company.name}">2</td>-->
         <tbody>
 
             <tr th:each = "company: ${companies}">
                 <td><span th:text="${company.id}"></span></td>
                 <td><span th:text="${company.name}"></span></td>
 
-<!--                <td>-->
-<!--                    <a href="/edit?id=${company.id}">Edit</a>-->
-
-<!--                    <a href="/delete?id=${company.id}">Delete</a>-->
-<!--                </td>-->
+                <td>
+                    <a th:href="@{/api/company/edit_company/(id=${company.id})}">Edit</a>
+                </td>
+                <td>
+                    <a th:href="@{/api/company/delete_company/(id=${company.id})}">Delete</a>
+                </td>
             </tr>
         </tbody>
     </table>

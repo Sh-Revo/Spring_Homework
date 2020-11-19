@@ -5,12 +5,13 @@ import com.spring.homework.domain.Product;
 import com.spring.homework.service.CompanyService;
 import com.spring.homework.service.ProductService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/api/product")
 @RequiredArgsConstructor
 public class ProductController {

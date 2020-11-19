@@ -5,11 +5,14 @@
 </head>
 <body>
 
-<form>
+<form method="POST" modelAttribute="company" action="/api/company/save">
     <div>
-        <h2>Add company</h2>
+        <h2>Edit company</h2>
+        <input name="companyid" type="text" th:field="${company.id}" placeholder="id Company" readonly/>
+        <br>
+        <br>
 
-        <input name="namecompany" type="text" placeholder="Name Company"/>
+        <input name="namecompany" type="text" th:field="${company.name}" placeholder="Name Company"/>
         <br>
         <br>
 

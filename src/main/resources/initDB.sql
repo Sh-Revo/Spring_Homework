@@ -1,3 +1,10 @@
+create table if not exists company
+(
+	company_id serial primary key,
+	company_name varchar(50)
+);
+alter table company owner to postgres;
+
 create table if not exists product(
 	product_id serial primary key,
 	product_name varchar(35),
@@ -6,13 +13,6 @@ create table if not exists product(
 	foreign key(company_id) references company(company_id)
 );
 alter table product owner to postgres;
-
-create table if not exists company
-(
-	company_id serial primary key,
-	company_name varchar(50)
-);
-alter table company owner to postgres;
 
 create table if not exists role_table
 (

@@ -3,11 +3,12 @@ package com.spring.homework.controller;
 import com.spring.homework.domain.User;
 import com.spring.homework.service.UserService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
-@RestController
+@Controller
 @RequestMapping("/api/user")
 @RequiredArgsConstructor
 public class UserController {
