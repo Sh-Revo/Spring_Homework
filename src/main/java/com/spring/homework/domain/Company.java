@@ -3,6 +3,7 @@ package com.spring.homework.domain;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;
+import lombok.RequiredArgsConstructor;
 
 import javax.persistence.*;
 import java.util.List;
@@ -22,4 +23,5 @@ public class Company {
     @JsonIgnore
     @OneToMany(mappedBy = "company")
     private List<Product> products;
+
 }

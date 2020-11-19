@@ -31,11 +31,6 @@ public class MainController {
         return "company";
     }
 
-    @GetMapping("/registration")
-    public String registration(){
-        return "registration";
-    }
-
     @GetMapping("/add_company")
     public String addCompany(){
         return "add_company";
@@ -46,8 +41,38 @@ public class MainController {
         return "add_product";
     }
 
+    @GetMapping("/add_user")
+    public String addUser(){
+        return "add_user";
+    }
+
+    @GetMapping("/edit_company")
+    public String editCompany() {
+        return "edit_company";
+    }
+
+    @GetMapping("/edit_product")
+    public String editProduct() {
+        return "edit_product";
+    }
+
+    @GetMapping("/edit_user")
+    public String editUser() {
+        return "edit_user";
+    }
+
     @GetMapping("/show_company")
     public String showCompany(){
         return "show_company";
+    }
+
+    @GetMapping("/show_product")
+    public String showProduct(){
+        return "show_product";
+    }
+
+    @GetMapping("/show_user")
+    public String showUser(){
+        return "show_user";
     }
 }

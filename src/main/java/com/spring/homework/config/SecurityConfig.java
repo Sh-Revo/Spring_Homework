@@ -24,27 +24,28 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
         http.csrf().disable()
                 .authorizeRequests()
                 .antMatchers("/", "/home").permitAll()
-                .antMatchers("/registration", "/add_company", "/add_product").permitAll()
-                .antMatchers("/show_company").permitAll()
+                .antMatchers("/show_company", "/add_company", "/edit_company").permitAll()
+                .antMatchers("/show_product", "/add_product", "/edit_product").permitAll()
+                .antMatchers("/show_user", "/add_user", "/edit_user").permitAll()
                 .antMatchers("/admin/**").hasAnyRole("ADMIN")
-                .antMatchers("/user/**").hasAnyRole("USER")
-                .anyRequest().authenticated()
-                .and()
-                .formLogin()
-                .loginPage("/login")
-                .permitAll()
-                .and()
-                .logout()
-                .permitAll()
-                .and()
-                .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
+                .antMatchers("/user/**").hasAnyRole("USER");
+//                .anyRequest().authenticated()
+//                .and()
+//                .formLogin()
+//                .loginPage("/login")
+//                .permitAll()
+//                .and()
+//                .logout()
+//                .permitAll()
+//                .and()
+//                .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
     }
 
-    @Autowired
-    public void configGlobal(AuthenticationManagerBuilder auth) throws Exception {
-        auth.inMemoryAuthentication()
-                .withUser("user").password("{noop}password").roles("USER")
-                .and()
-                .withUser("admin").password("{noop}1234").roles("ADMIN");
-    }
+//    @Autowired
+//    public void configGlobal(AuthenticationManagerBuilder auth) throws Exception {
+//        auth.inMemoryAuthentication()
+//                .withUser("user").password("{noop}password").roles("USER")
+//                .and()
+//                .withUser("admin").password("{noop}1234").roles("ADMIN");
+//    }
 }

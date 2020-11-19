@@ -1,7 +1,5 @@
-
-<!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01
-    Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
-<html>
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
     <title>Customer Manager</title>
@@ -19,17 +17,23 @@
             <th>ID</th>
             <th>Name</th>
         </tr>
-        <c:forEach items="${listCompany}" var="company">
-            <tr>
-                <td>${company.id}</td>
-                <td>${company.name}</td>
-                <td>
-                    <a href="/edit?id=${company.id}">Edit</a>
 
-                    <a href="/delete?id=${company.id}">Delete</a>
-                </td>
+<!--            <tr th:each = "company: ${companies}">-->
+<!--                <td th:utex = "${company.id}">1</td>-->
+<!--                <td th:utex = "${company.name}">2</td>-->
+        <tbody>
+
+            <tr th:each = "company: ${companies}">
+                <td><span th:text="${company.id}"></span></td>
+                <td><span th:text="${company.name}"></span></td>
+
+<!--                <td>-->
+<!--                    <a href="/edit?id=${company.id}">Edit</a>-->
+
+<!--                    <a href="/delete?id=${company.id}">Delete</a>-->
+<!--                </td>-->
             </tr>
-        </c:forEach>
+        </tbody>
     </table>
 </div>
 </body>

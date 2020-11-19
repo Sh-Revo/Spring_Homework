@@ -1,11 +1,14 @@
 package com.spring.homework.controller;
 
 import com.spring.homework.domain.Company;
+import com.spring.homework.domain.Product;
 import com.spring.homework.service.CompanyService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.servlet.ModelAndView;
 
+import java.util.ArrayList;
 import java.util.List;
 
 @RestController
@@ -30,11 +33,9 @@ public class CompanyController {
         companyService.deleteCompany(company);
     }
 
-    @RequestMapping("/show_company")
-    public ModelAndView home() {
-        List<Company> listCompany = companyService.getAllCompany();
-        ModelAndView mav = new ModelAndView("show_company");
-        mav.addObject("listCompany", listCompany);
-        return mav;
+    @RequestMapping(value = {"/show_company"})
+    public String showCompany(Model model) {
+        model.addAttribute("companies", companyService.getAllCompany());
+        return "show_company";
     }
 }
