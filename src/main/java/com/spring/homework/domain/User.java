@@ -1,6 +1,8 @@
 package com.spring.homework.domain;
 
 import lombok.Data;
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 import javax.persistence.*;
 import java.util.List;
@@ -11,6 +13,7 @@ import java.util.List;
 public class User {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "user_id")
     private Long id;
 
@@ -26,7 +29,8 @@ public class User {
     @Column(name = "user_lastname")
     private String lastname;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @OnDelete(action = OnDeleteAction.CASCADE)
+    @ManyToOne(optional = false)
     @JoinColumn(name="role_id")
     private Role role;
 

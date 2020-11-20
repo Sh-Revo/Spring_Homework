@@ -14,14 +14,16 @@ public class UserService {
     private final UserRepository userRepository;
 
     public List<User> getAllUser(){
-        return userRepository.findAll();
+        return userRepository.findByOrderByIdAsc();
     }
 
     public void updateUser(User user){
         userRepository.save(user);
     }
 
-    public void deleteUser(User user){
-        userRepository.delete(user);
+    public void deleteUser(Long id){
+        userRepository.deleteById(id);
     }
+
+    public User getUser(Long id) { return userRepository.findById(id).get(); }
 }
