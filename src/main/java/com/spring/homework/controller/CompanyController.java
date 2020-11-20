@@ -1,20 +1,11 @@
 package com.spring.homework.controller;
 
 import com.spring.homework.domain.Company;
-import com.spring.homework.domain.Product;
 import com.spring.homework.service.CompanyService;
 import lombok.RequiredArgsConstructor;
-import lombok.Value;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
-import org.springframework.validation.BindingResult;
-import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
-import org.springframework.web.servlet.ModelAndView;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Map;
 
 @Controller
 @RequestMapping("/api/company")
@@ -44,7 +35,7 @@ public class CompanyController {
     }
 
     @RequestMapping("/delete_company")
-    public String deleteCustomerForm(@RequestParam long id) {
+    public String deleteCompanyForm(@RequestParam long id) {
         companyService.deleteCompany(id);
         return "redirect:/api/company/show_company";
     }

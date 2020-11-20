@@ -9,7 +9,9 @@ import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
+
 
 @Controller
 @RequestMapping("/api/product")
@@ -19,20 +21,39 @@ public class ProductController {
     private final ProductService productService;
     private final CompanyService companyService;
 
-    @GetMapping("/getAll")
-    public String getAllProduct(Model model){
-        model.addAttribute("allCompany", productService.getAllProduct());
+    @RequestMapping(value = {"/show_product"})
+    public String showProduct(Model model) {
+        model.addAttribute("products", productService.getAllProduct());
+        model.addAttribute("companies", companyService.getAllCompany());
+        return "show_product";
+    }
+
+    @RequestMapping("/add_product")
+    public String newProductForm(Model model) {
+        Product product = new Product();
+        model.addAttribute("product", product);
+        model.addAttribute("companies", companyService.getAllCompany());
         return "add_product";
     }
 
-    @PostMapping("/updateAndInsert")
-    public void updateProduct(@RequestBody Product product){
-        productService.updateProduct(product);
+    @RequestMapping("/edit_product")
+    public String editProductForm(@RequestParam long id, Model model) {
+        Product product = productService.getProduct(id);
+        model.addAttribute("product", product);
+        model.addAttribute("companies", companyService.getAllCompany());
+        return "edit_product";
     }
 
-    @PostMapping("/delete")
-    public void deleteProduct(@RequestBody Product product){
-        productService.deleteProduct(product);
+    @RequestMapping("/delete_product")
+    public String deleteProductForm(@RequestParam long id) {
+        productService.deleteProduct(id);
+        return "redirect:/api/product/show_product";
+    }
+
+    @RequestMapping(value = "/save", method = RequestMethod.POST)
+    public String saveProduct(@ModelAttribute("product") Product product) {
+        productService.updateProduct(product);
+        return "redirect:/api/product/show_product";
     }
 
 //    @ModelAttribute("allCompany")

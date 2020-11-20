@@ -7,8 +7,10 @@
 
 <form method="POST" modelAttribute="product" action="/api/product/save">
     <div>
-        <h2>Add product</h2>
-
+        <h2>Edit product</h2>
+        <input name="productid" type="text" th:field="${product.id}" placeholder="Name Product" readonly/>
+        <br>
+        <br>
         <input name="nameproduct" type="text" th:field="${product.name}" placeholder="Name Product"/>
         <br>
         <br>
@@ -23,7 +25,7 @@
                         th:utext="${company.getName()}"/>
             </select>
         </p>
-        <button class="btn btn-lg btn-primary btn-block" type="submit">Add product</button>
+        <button class="btn btn-lg btn-primary btn-block" type="submit">Edit product</button>
     </div>
 </form>
 

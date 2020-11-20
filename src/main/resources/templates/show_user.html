@@ -17,6 +17,7 @@
             <th>Email</th>
             <th>Password</th>
         </tr>
+        <tbody>
             <tr th:each="user : ${users}">
                 <td><span th:text="${user.id}"></span></td>
                 <td><span th:text="${user.firstname}"></span></td>
@@ -30,6 +31,7 @@
                     <a th:href="@{/api/user/delete_user/(id=${user.id})}">Delete</a>
                 </td>
             </tr>
+        </tbody>
     </table>
 </div>
 </body>

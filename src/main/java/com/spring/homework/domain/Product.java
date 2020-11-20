@@ -12,6 +12,7 @@ import java.math.BigDecimal;
 public class Product {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "product_id")
     private Long id;
 
@@ -21,7 +22,7 @@ public class Product {
     @Column(name = "product_price")
     private BigDecimal price;
 
-    @ManyToOne(optional = false, cascade = CascadeType.ALL)
+    @ManyToOne(optional = false, cascade = CascadeType.MERGE, fetch= FetchType.LAZY)
     @JoinColumn(name = "company_id")
     private Company company;
 

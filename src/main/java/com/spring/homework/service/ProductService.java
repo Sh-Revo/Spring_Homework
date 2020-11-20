@@ -14,14 +14,16 @@ public class ProductService {
     private final ProductRepository productRepository;
 
     public List<Product> getAllProduct(){
-        return productRepository.findAll();
+        return productRepository.findByOrderByIdAsc();
     }
 
     public void updateProduct(Product product){
         productRepository.save(product);
     }
 
-    public void deleteProduct(Product product){
-        productRepository.delete(product);
+    public void deleteProduct(Long id){
+        productRepository.deleteById(id);
     }
+
+    public Product getProduct(Long id) { return productRepository.findById(id).get(); }
 }
