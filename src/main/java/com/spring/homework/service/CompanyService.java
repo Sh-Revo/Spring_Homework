@@ -16,7 +16,7 @@ public class CompanyService {
     private final CompanyRepository companyRepository;
 
     public List<Company> getAllCompany(){
-        return companyRepository.findAll();
+        return companyRepository.findByOrderByIdAsc();
     }
 
     public void updateCompany(Company company){

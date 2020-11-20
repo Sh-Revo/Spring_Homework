@@ -23,11 +23,6 @@ public class CompanyController {
 
     private final CompanyService companyService;
 
-    @GetMapping("/getAll")
-    public List<Company> getAll(){
-        return companyService.getAllCompany();
-    }
-
     @RequestMapping(value = {"/show_company"})
     public String showCompany(Model model) {
         model.addAttribute("companies", companyService.getAllCompany());
