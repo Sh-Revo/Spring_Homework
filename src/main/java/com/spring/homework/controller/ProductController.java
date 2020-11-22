@@ -2,6 +2,7 @@ package com.spring.homework.controller;
 
 import com.spring.homework.domain.Company;
 import com.spring.homework.domain.Product;
+import com.spring.homework.dto.ProductDTO;
 import com.spring.homework.service.CompanyService;
 import com.spring.homework.service.ProductService;
 import lombok.RequiredArgsConstructor;
@@ -50,11 +51,21 @@ public class ProductController {
         return "redirect:/api/product/show_product";
     }
 
-    @RequestMapping(value = "/save", method = RequestMethod.POST)
-    public String saveProduct(@ModelAttribute("product") Product product) {
+    @RequestMapping(value = "/saveDTO", method = RequestMethod.POST)
+    public String saveProductDTO(@ModelAttribute("productDTO") ProductDTO product) {
+        final Company company = companyService.getCompany(product.getCompany().getId());
+        product.setCompany(company);
+        System.out.println(product);
+        productService.updateProductDTO(product);
+        return "redirect:/api/product/show_product";
+    }
+
+    @RequestMapping(value = "save", method = RequestMethod.POST)
+    public String saveProduct(@ModelAttribute("product") Product product){
         productService.updateProduct(product);
         return "redirect:/api/product/show_product";
     }
+
 
 //    @ModelAttribute("allCompany")
 //    public List<Company> allCompany() {

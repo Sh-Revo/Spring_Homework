@@ -5,7 +5,7 @@
 </head>
 <body>
 
-<form method="POST" modelAttribute="product" action="/api/product/save">
+<form method="POST" modelAttribute="product" action="/api/product/saveDTO">
     <div>
         <h2>Edit product</h2>
         <input name="productid" type="text" th:field="${product.id}" placeholder="Name Product" readonly/>
@@ -19,7 +19,6 @@
         <br>
         <p>Company Name:
             <select th:field="${product.company.id}">
-                <option value=""> -- </option>
                 <option th:each="company: ${companies}"
                         th:value="${company.getId()}"
                         th:utext="${company.getName()}"/>
