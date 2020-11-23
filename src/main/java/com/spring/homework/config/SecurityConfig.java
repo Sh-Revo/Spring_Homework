@@ -28,24 +28,27 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers("/show_product", "/add_product", "/edit_product").permitAll()
                 .antMatchers("/show_user", "/add_user", "/edit_user").permitAll()
                 .antMatchers("/admin/**").hasAnyRole("ADMIN")
-                .antMatchers("/user/**").hasAnyRole("USER");
-//                .anyRequest().authenticated()
-//                .and()
-//                .formLogin()
-//                .loginPage("/login")
-//                .permitAll()
-//                .and()
-//                .logout()
-//                .permitAll()
-//                .and()
-//                .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
+                .antMatchers("/user/**").hasAnyRole("USER")
+                .anyRequest().authenticated()
+                .and()
+                .formLogin()
+                .loginPage("/login")
+                .defaultSuccessUrl("/home")
+                .failureUrl("/login_error")
+                .permitAll()
+                .and()
+                .logout()
+                .logoutSuccessUrl("/home")
+                .permitAll()
+                .and()
+                .exceptionHandling().accessDeniedHandler(accessDeniedHandler);
     }
 
-//    @Autowired
-//    public void configGlobal(AuthenticationManagerBuilder auth) throws Exception {
-//        auth.inMemoryAuthentication()
-//                .withUser("user").password("{noop}password").roles("USER")
-//                .and()
-//                .withUser("admin").password("{noop}1234").roles("ADMIN");
-//    }
+    @Autowired
+    public void configGlobal(AuthenticationManagerBuilder auth) throws Exception {
+        auth.inMemoryAuthentication()
+                .withUser("user").password("{noop}password").roles("USER")
+                .and()
+                .withUser("admin").password("{noop}1234").roles("ADMIN");
+    }
 }

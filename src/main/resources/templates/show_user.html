@@ -2,7 +2,7 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=ISO-8859-1">
-    <title>Customer Manager</title>
+    <title>User Manager</title>
 </head>
 <body>
 <div align="center">
@@ -24,15 +24,17 @@
                 <td><span th:text="${user.lastname}"></span></td>
                 <td><span th:text="${user.email}"></span></td>
                 <td><span th:text="${user.password}"></span></td>
-                <td>
+
+                <td sec:authorize="hasRole('ADMIN')">
                     <a th:href="@{/api/user/edit_user/(id=${user.id})}">Edit</a>
                 </td>
-                <td>
+                <td sec:authorize="hasRole('ADMIN')">
                     <a th:href="@{/api/user/delete_user/(id=${user.id})}">Delete</a>
                 </td>
             </tr>
         </tbody>
     </table>
+    <h3><a th:href="@{/home}">Go Main Form</a></h3>
 </div>
 </body>
 </html>

@@ -8,8 +8,9 @@
 <body>
 <div>
 
-        <h2>Log in</h2>
-        <form method="POST" modelAttribute="login" th:action="@{/login}">
+    <h2>Log in</h2>
+        <h4>Exception: Wrong user or password</h4>
+    <form method="POST" modelAttribute="login" th:action="@{/login}">
         <div>
             <input name="username" type="text" placeholder="Username"/>
             <br>
@@ -23,6 +24,6 @@
     </form>
     <br>
     <a th:href="@{/home}"><button type="submit">Home</button></a>
-    </div>
+</div>
 </body>
 </html>
